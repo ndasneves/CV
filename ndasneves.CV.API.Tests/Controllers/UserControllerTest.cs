@@ -22,6 +22,7 @@ namespace ndasneves.CV.API.Tests.Controllers
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.GetAsync("user").Result;
+            Console.WriteLine("RequestUri : " + response.RequestMessage.RequestUri);
             Assert.AreEqual(true, response.IsSuccessStatusCode);
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
             var userInfo = response.Content.ReadAsAsync<UserInfo>().Result;
